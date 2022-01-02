@@ -1,73 +1,84 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+Projeto Rede Social (M04P02)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é uma API desenvolvida utilizando NestJS com integração com um banco de dados PostgreSQL através do Prisma.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A API possue 5 rotas principais sendo elas:
 
-## Description
+# USUARIOS(/usuarios)
+Dentro desta rota é possível:
+-Criação de um novo usuário utilizando o verbo [POST] e enviando os dados do usuário seguindo esse padrão em formato JSON:
+{
+  "nome": string,
+  "senha": string,
+  "imagem": string,
+  "bio": string,
+  "nascimento": string | Date,
+}
+-Listar todos os usuários utilizando o verbo [GET].
+-Listar um usuário utilizando o verbo [GET] e o [id] do usuário na rota (usuarios/id).
+-Atualizar um usuário utilizando o verbo [PATCH], o [id] do usuário na rota (usuarios/id) e enviando os dados atualizados do usuário seguindo esse padrão em formato JSON:
+{
+  "nome": string,
+  "senha": string,
+  "imagem": string,
+  "bio": string,
+  "nascimento": string | Date,
+}
+-Apagar um usuário utilizando o verbo [DELETE] e o [id] do usuário na rota (usuarios/id).
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# SEGUIDORES(/seguidores)
+Dentro desta rota é possível:
+-Criação de um novo seguidor utilizando o verbo [POST] e enviando os dados do seguidor seguindo esse padrão em formato JSON:
+{
+  "idSeguidor": number  
+}
+-Listar todos os seguidores utilizando o verbo [GET].
+-Listar um seguidor utilizando o verbo [GET] e o [id] do seguidor na rota (seguidores/id).
+-Atualizar um seguidor utilizando o verbo [PATCH], o [id] do seguidor na rota (seguidores/id) e enviando os dados atualizados do seguidor seguindo esse padrão em formato JSON:
+{
+  "idSeguidor": number  
+}
+-Apagar um seguidor utilizando o verbo [DELETE] e o [id] do seguidor na rota (seguidores/id).
 
-## Installation
+# SEGUINDO(/seguindo)
+Dentro desta rota é possível:
+-Criação de uma nova pessoa seguida utilizando o verbo [POST] e enviando os dados do pessoa seguindo esse padrão em formato JSON:
+{
+  "idSeguindo": number
+}
+-Listar todos as pessoas que são seguidas utilizando o verbo [GET].
+-Listar uma pessoa seguida utilizando o verbo [GET] e o [id] da pessoa na rota (seguindo/id).
+-Atualizar uma pessoa seguida utilizando o verbo [PATCH], o [id] da pessoa na rota (seguindo/id) e enviando os dados atualizados da pessoa seguida seguindo esse padrão em formato JSON:
+{
+  "idSeguindo": number
+}
+-Apagar uma pessoa seguida utilizando o verbo [DELETE] e o [id] da pessoa seguida na rota (seguindo/id).
 
-```bash
-$ npm install
-```
+# TWEETS(/tweets)
+Dentro desta rota é possível:
+-Criação de um novo tweet utilizando o verbo [POST] e enviando o tweet seguindo esse padrão em formato JSON:
+{
+  "texto": string,
+  "emoji": string,
+  "curtidas": number,
+  "usuarioId": number
+}
+-Listar todos os tweets utilizando o verbo [GET].
+-Listar um tweet utilizando o verbo [GET] e o [id] do tweet na rota (tweets/id).
+-Atualizar um tweet utilizando o verbo [PATCH], o [id] do tweet na rota (tweets/id) e enviando o tweet atualizado seguindo esse padrão em formato JSON:
+{
+  "texto": string,
+  "emoji": string,
+  "curtidas": number,
+  "usuarioId": number
+}
+-Apagar um tweet utilizando o verbo [DELETE] e o [id] do tweet na rota (tweets/id).
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+# AUTH(/auth)
+Dentro dessa rota é possível:
+-Requisitar um token utilizando o verbo [POST] e enviando os dados do usuário seguindo esse padrão em formato JSON:
+{
+  "nome":  string,
+  "senha": string
+}
+-Realizar a autenticação do token recebido utilizando o verbo [GET] e enviando o token no campo de autorização.
